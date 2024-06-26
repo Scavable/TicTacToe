@@ -1,4 +1,4 @@
-package com.scavable.GUI;
+package com.scavable.gui;
 
 public final class GameGUI {
 }

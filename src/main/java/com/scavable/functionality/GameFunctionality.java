@@ -1,4 +1,4 @@
-package com.scavable.Functionality;
+package com.scavable.functionality;
 
 public final class GameFunctionality {
 }

@@ -1,7 +1,7 @@
-package com.scavable.Functionality;
+package com.scavable.functionality;
 
-import com.scavable.GUI.MainMenuGUI;
-import com.scavable.GUI.SettingsMenuGUI;
+import com.scavable.gui.MainMenuGUI;
+import com.scavable.gui.SettingsMenuGUI;
 
 import javax.swing.*;
 import java.awt.*;
