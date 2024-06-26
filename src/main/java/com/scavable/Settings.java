@@ -21,7 +21,7 @@ public class Settings {
         prop.setProperty("turnTimeLimit", String.valueOf(turnTimeLimit));
         prop.setProperty("symbols", String.valueOf(symbols));
 
-        prop.storeToXML(fos, "Settings for Tick Tack Toe", StandardCharsets.UTF_8);
+        prop.storeToXML(fos, "Settings for Tic Tac Toe", StandardCharsets.UTF_8);
 
         fos.close();
 
