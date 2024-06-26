@@ -6,7 +6,6 @@ import com.scavable.Settings;
 import com.sun.tools.javac.Main;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -34,14 +33,15 @@ public final class SettingsMenuFunctionality {
 
         settingsMenuGUI.getSaveButton().addActionListener(e -> {
             try {
-                Dimension windowSize = new Dimension(Integer.parseInt(settingsMenuGUI.getWindowSizeWidthTextField().getText()),
-                        Integer.parseInt(settingsMenuGUI.getWindowSizeHeightTextField().getText()));
+                int windowSizeWidth = Integer.parseInt(settingsMenuGUI.getWindowSizeWidthTextField().getText());
+                int windowSizeHeight = Integer.parseInt(settingsMenuGUI.getWindowSizeHeightTextField().getText());
 
                 byte rounds = Byte.parseByte(settingsMenuGUI.getRoundsTextField().getText());
                 float turnTimeLimit = Float.parseFloat(settingsMenuGUI.getTurnTimeLimitTextField().getText());
-                char[] symbols = new char[] {settingsMenuGUI.getSymbols1TextField().getText().charAt(0), settingsMenuGUI.getSymbols2TextField().getText().charAt(0)};
+                char symbols1 = settingsMenuGUI.getSymbols1TextField().getText().charAt(0);
+                char symbols2 = settingsMenuGUI.getSymbols2TextField().getText().charAt(0);
 
-                if(Settings.save(windowSize, rounds, turnTimeLimit, symbols)){
+                if(Settings.save(windowSizeWidth, windowSizeHeight, rounds, turnTimeLimit, symbols1, symbols2)){
                     settingsMenuGUI.dispose();
                     MainMenuGUI.getInstance().setEnabled(true);
                     MainMenuGUI.getInstance().toFront();

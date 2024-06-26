@@ -4,6 +4,7 @@ import com.scavable.Functionality.SettingsMenuFunctionality;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Properties;
 
 public final class SettingsMenuGUI extends JFrame {
 
@@ -30,6 +31,42 @@ public final class SettingsMenuGUI extends JFrame {
     private final JButton cancelButton = new JButton("Cancel");
 
     public SettingsMenuGUI(){
+
+        getContentPane().setLayout(new GridLayout(6,2));
+
+        getContentPane().add(title);
+        getContentPane().add(new JLabel());
+
+        getContentPane().add(windowSizeLabel);
+        windowSizePanel.add(windowSizeWidthTextField);
+        windowSizePanel.add(windowSizeHeightTextField);
+        getContentPane().add(windowSizePanel);
+
+        getContentPane().add(roundsLabel);
+        getContentPane().add(roundsTextField);
+
+        getContentPane().add(turnTimeLimitLabel);
+        getContentPane().add(turnTimeLimitTextField);
+
+        getContentPane().add(symbolsLabel);
+        symbolsPanel.add(symbols1TextField);
+        symbolsPanel.add(symbols2TextField);
+        getContentPane().add(symbolsPanel);
+
+        getContentPane().add(saveButton);
+        getContentPane().add(cancelButton);
+
+        SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
+    }
+
+    public SettingsMenuGUI(Properties prop){
+
+        windowSizeWidthTextField.setText(prop.getProperty("windowSizeWidth"));
+        windowSizeHeightTextField.setText(prop.getProperty("windowSizeHeight"));
+        roundsTextField.setText(prop.getProperty("rounds"));
+        turnTimeLimitTextField.setText(prop.getProperty("turnTimeLimit"));
+        symbols1TextField.setText(prop.getProperty("symbols1"));
+        symbols2TextField.setText(prop.getProperty("symbols2"));
 
         getContentPane().setLayout(new GridLayout(6,2));
 

@@ -12,17 +12,19 @@ import java.util.Properties;
 public class Settings {
     private static final String separator = FileSystems.getDefault().getSeparator();
 
-    public static boolean save(Dimension windowSize, byte rounds, float turnTimeLimit, char[] symbols) throws IOException {
+    public static boolean save(int windowSizeWidth, int windowSizeHeight, byte rounds, float turnTimeLimit, char symbols1, char symbols2) throws IOException {
         Properties prop = new Properties();
 
         String path = new File(".").getCanonicalPath().concat(separator+"settings.properties");
 
         FileOutputStream fos = new FileOutputStream(new File(".").getCanonicalPath().concat(separator+"settings.properties"));
 
-        prop.setProperty("windowSize", windowSize.getWidth() + "," + windowSize.getHeight());
+        prop.setProperty("windowSizeWidth", String.valueOf(windowSizeWidth));
+        prop.setProperty("windowSizeHeight", String.valueOf(windowSizeHeight));
         prop.setProperty("rounds", String.valueOf(rounds));
         prop.setProperty("turnTimeLimit", String.valueOf(turnTimeLimit));
-        prop.setProperty("symbols", String.valueOf(symbols));
+        prop.setProperty("symbols1", String.valueOf(symbols1));
+        prop.setProperty("symbols2", String.valueOf(symbols2));
 
         prop.storeToXML(fos, "Settings for Tic Tac Toe", StandardCharsets.UTF_8);
 
@@ -31,12 +33,16 @@ public class Settings {
         return new File(path).exists();
     }
 
-    public static boolean load() throws IOException {
+    public static Properties load() throws IOException {
         Properties prop = new Properties();
         FileInputStream fis = new FileInputStream(new File(".").getCanonicalPath().concat(separator+"settings.properties"));
-        prop.load(fis);
+        prop.loadFromXML(fis);
         fis.close();
 
-        return prop.containsKey("windowSize") && prop.containsKey("rounds") && prop.containsKey("turnTimeLimit") && prop.containsKey("symbols");
+        if(prop.containsKey("windowSizeWidth") && prop.containsKey("windowSizeHeight") && prop.containsKey("rounds")
+                && prop.containsKey("turnTimeLimit") && prop.containsKey("symbols1") && prop.containsKey("symbols2"))
+            return prop;
+
+        return null;
     }
 }

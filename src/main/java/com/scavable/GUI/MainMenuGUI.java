@@ -6,6 +6,7 @@ import com.scavable.Settings;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.Properties;
 
 public final class MainMenuGUI extends JFrame {
     private static MainMenuGUI INSTANCE = null;
@@ -19,12 +20,19 @@ public final class MainMenuGUI extends JFrame {
 
     public static void main(String[] args) {
         INSTANCE = MainMenuGUI.getInstance();
+
         try {
-            Settings.load();
+            Properties prop = Settings.load();
+            MainMenuFunctionality mainMenuFunctionality;
+            if(prop != null)
+                mainMenuFunctionality = new MainMenuFunctionality(INSTANCE, prop);
+            else {
+                mainMenuFunctionality = new MainMenuFunctionality(INSTANCE);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        MainMenuFunctionality mainMenuFunctionality = new MainMenuFunctionality(INSTANCE);
+
     }
 
     private MainMenuGUI(){
