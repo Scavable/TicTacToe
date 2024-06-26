@@ -1,17 +1,17 @@
-package GUI;
+package com.scavable.GUI;
 
-import Functionality.SettingsMenuFunctionality;
+import com.scavable.Functionality.SettingsMenuFunctionality;
 
 import javax.swing.*;
-import javax.swing.text.MaskFormatter;
 import java.awt.*;
 
 public final class SettingsMenuGUI extends JFrame {
 
-    private final JLabel title = new JLabel("Settings");
+    private final JLabel title = new JLabel("com.scavable.Settings");
 
     private final JLabel windowSizeLabel = new JLabel("Window Size:");
     private final JPanel windowSizePanel = new JPanel();
+
     private final JTextField windowSizeWidthTextField = new JTextField("Width", 5);
     private final JTextField windowSizeHeightTextField = new JTextField("Height", 5);
 
@@ -26,9 +26,12 @@ public final class SettingsMenuGUI extends JFrame {
     private final JTextField symbols1TextField = new JTextField("X", 2);
     private final JTextField symbols2TextField = new JTextField("O", 2);
 
+    private final JButton saveButton = new JButton("Save");
+    private final JButton cancelButton = new JButton("Cancel");
+
     public SettingsMenuGUI(){
 
-        getContentPane().setLayout(new GridLayout(5,2));
+        getContentPane().setLayout(new GridLayout(6,2));
 
         getContentPane().add(title);
         getContentPane().add(new JLabel());
@@ -49,7 +52,41 @@ public final class SettingsMenuGUI extends JFrame {
         symbolsPanel.add(symbols2TextField);
         getContentPane().add(symbolsPanel);
 
+        getContentPane().add(saveButton);
+        getContentPane().add(cancelButton);
+
         SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
+    }
+
+    public JTextField getWindowSizeWidthTextField() {
+        return windowSizeWidthTextField;
+    }
+
+    public JTextField getWindowSizeHeightTextField() {
+        return windowSizeHeightTextField;
+    }
+
+    public JTextField getRoundsTextField() {
+        return roundsTextField;
+    }
+
+    public JTextField getTurnTimeLimitTextField() {
+        return turnTimeLimitTextField;
+    }
+
+    public JTextField getSymbols1TextField() {
+        return symbols1TextField;
+    }
+
+    public JTextField getSymbols2TextField() {
+        return symbols2TextField;
+    }
+    public JButton getSaveButton() {
+        return saveButton;
+    }
+
+    public JButton getCancelButton() {
+        return cancelButton;
     }
 
 }

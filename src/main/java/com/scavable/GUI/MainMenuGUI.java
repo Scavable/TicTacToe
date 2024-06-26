@@ -1,6 +1,6 @@
-package GUI;
+package com.scavable.GUI;
 
-import Functionality.MainMenuFunctionality;
+import com.scavable.Functionality.MainMenuFunctionality;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ public final class MainMenuGUI extends JFrame {
     private static MainMenuGUI INSTANCE = null;
     private final JPanel panel = new JPanel();
 
-    private final JLabel title = new JLabel("Main Menu");
+    private final JLabel menuTitle = new JLabel("Main Menu");
     private final JButton playButton = new JButton("Play");
     private final JButton exitButton = new JButton("Exit");
     private final JButton settingsButton = new JButton("Settings");
@@ -17,18 +17,18 @@ public final class MainMenuGUI extends JFrame {
 
     public static void main(String[] args) {
         INSTANCE = MainMenuGUI.getInstance();
+        //Settings.load();
         MainMenuFunctionality mainMenuFunctionality = new MainMenuFunctionality(INSTANCE);
     }
 
     private MainMenuGUI(){
         panel.setLayout(new GridLayout(0,1));
         add(panel);
-        panel.add(title);
+        panel.add(menuTitle);
         panel.add(playButton);
         panel.add(settingsButton);
         panel.add(exitButton);
         panel.add(aboutButton);
-
 
     }
 
@@ -53,5 +53,9 @@ public final class MainMenuGUI extends JFrame {
 
     public JButton getAboutButton() {
         return aboutButton;
+    }
+
+    public JLabel getMenuTitle() {
+        return menuTitle;
     }
 }
