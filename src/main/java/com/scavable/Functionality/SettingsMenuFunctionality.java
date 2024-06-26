@@ -3,6 +3,7 @@ package com.scavable.Functionality;
 import com.scavable.GUI.MainMenuGUI;
 import com.scavable.GUI.SettingsMenuGUI;
 import com.scavable.Settings;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,14 +43,20 @@ public final class SettingsMenuFunctionality {
 
                 if(Settings.save(windowSize, rounds, turnTimeLimit, symbols)){
                     settingsMenuGUI.dispose();
+                    MainMenuGUI.getInstance().setEnabled(true);
+                    MainMenuGUI.getInstance().toFront();
                 }else{
                     JOptionPane.showMessageDialog(settingsMenuGUI, "Unable to save settings.", "Error", JOptionPane.ERROR_MESSAGE);
                     settingsMenuGUI.dispose();
+                    MainMenuGUI.getInstance().setEnabled(true);
+                    MainMenuGUI.getInstance().toFront();
                 }
 
             } catch (IOException | NumberFormatException ex) {
                 JOptionPane.showMessageDialog(settingsMenuGUI, "Unable to save settings.", "Error", JOptionPane.ERROR_MESSAGE);
                 settingsMenuGUI.dispose();
+                MainMenuGUI.getInstance().setEnabled(true);
+                MainMenuGUI.getInstance().toFront();
             }
 
         });

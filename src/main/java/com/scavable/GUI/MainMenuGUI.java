@@ -1,9 +1,11 @@
 package com.scavable.GUI;
 
 import com.scavable.Functionality.MainMenuFunctionality;
+import com.scavable.Settings;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public final class MainMenuGUI extends JFrame {
     private static MainMenuGUI INSTANCE = null;
@@ -17,7 +19,11 @@ public final class MainMenuGUI extends JFrame {
 
     public static void main(String[] args) {
         INSTANCE = MainMenuGUI.getInstance();
-        //Settings.load();
+        try {
+            Settings.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         MainMenuFunctionality mainMenuFunctionality = new MainMenuFunctionality(INSTANCE);
     }
 

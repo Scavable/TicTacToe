@@ -10,7 +10,7 @@ import java.nio.file.FileSystems;
 import java.util.Properties;
 
 public class Settings {
-    private static String separator = FileSystems.getDefault().getSeparator();
+    private static final String separator = FileSystems.getDefault().getSeparator();
 
     public static boolean save(Dimension windowSize, byte rounds, float turnTimeLimit, char[] symbols) throws IOException {
         Properties prop = new Properties();
@@ -36,6 +36,7 @@ public class Settings {
         FileInputStream fis = new FileInputStream(new File(".").getCanonicalPath().concat(separator+"settings.properties"));
         prop.load(fis);
         fis.close();
-        return false;
+
+        return prop.containsKey("windowSize") && prop.containsKey("rounds") && prop.containsKey("turnTimeLimit") && prop.containsKey("symbols");
     }
 }
