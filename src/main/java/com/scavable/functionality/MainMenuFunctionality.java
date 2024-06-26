@@ -45,7 +45,7 @@ public final class MainMenuFunctionality {
     }
 
     private void settingsButtonAction(JButton settingsButton, Properties prop) {
-        settingsButton.setFont(settingsButton.getFont().deriveFont(20f));
+        //settingsButton.setFont(settingsButton.getFont().deriveFont(20f));
         settingsButton.addActionListener(e -> {
             mainMenuGUI.setEnabled(false);
             new SettingsMenuGUI(prop);
@@ -53,18 +53,18 @@ public final class MainMenuFunctionality {
     }
 
     private void playButtonAction(JButton playButton, Properties prop) {
-        playButton.setFont(playButton.getFont().deriveFont(20f));
+        //playButton.setFont(playButton.getFont().deriveFont(20f));
     }
 
     private void menuTitleLayout(JLabel menuTitle) {
-        menuTitle.setFont(menuTitle.getFont().deriveFont(20f));
+        //menuTitle.setFont(menuTitle.getFont().deriveFont(20f));
         menuTitle.setHorizontalAlignment(SwingConstants.CENTER);
         menuTitle.setBorder(BorderFactory.createLineBorder(Color.black));
         menuTitle.setOpaque(true);
     }
 
     private void settingsButtonAction(JButton settingsButton) {
-        settingsButton.setFont(settingsButton.getFont().deriveFont(20f));
+        //settingsButton.setFont(settingsButton.getFont().deriveFont(20f));
         settingsButton.addActionListener(e -> {
             mainMenuGUI.setEnabled(false);
             new SettingsMenuGUI();
@@ -72,17 +72,17 @@ public final class MainMenuFunctionality {
     }
 
     private void playButtonAction(JButton playButton) {
-        playButton.setFont(playButton.getFont().deriveFont(20f));
+        //playButton.setFont(playButton.getFont().deriveFont(20f));
 
     }
 
     private void exitButtonAction(JButton exitButton){
-        exitButton.setFont(exitButton.getFont().deriveFont(20f));
+        //exitButton.setFont(exitButton.getFont().deriveFont(20f));
         exitButton.addActionListener(e -> System.exit(0));
     }
 
     private void aboutButtonAction(JButton aboutButton){
-        aboutButton.setFont(aboutButton.getFont().deriveFont(20f));
+        //aboutButton.setFont(aboutButton.getFont().deriveFont(20f));
         JTextArea aboutTextArea = new JTextArea();
 
         String message = """

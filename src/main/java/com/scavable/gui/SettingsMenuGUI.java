@@ -1,6 +1,7 @@
 package com.scavable.gui;
 
 import com.scavable.functionality.SettingsMenuFunctionality;
+import com.scavable.util.Utility;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,6 +57,8 @@ public final class SettingsMenuGUI extends JFrame {
         getContentPane().add(saveButton);
         getContentPane().add(cancelButton);
 
+        Utility.defaultFontSize(getContentPane());
+
         SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
     }
 
@@ -91,6 +94,8 @@ public final class SettingsMenuGUI extends JFrame {
 
         getContentPane().add(saveButton);
         getContentPane().add(cancelButton);
+
+        Utility.defaultFontSize(getContentPane());
 
         SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
     }

@@ -1,2 +1,2 @@
-rootProject.name = "CommandLineTickTackToe"
+rootProject.name = "TicTacToe"
 

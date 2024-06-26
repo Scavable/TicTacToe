@@ -2,6 +2,7 @@ package com.scavable.gui;
 
 import com.scavable.functionality.MainMenuFunctionality;
 import com.scavable.Settings;
+import com.scavable.util.Utility;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,6 +44,8 @@ public final class MainMenuGUI extends JFrame {
         panel.add(settingsButton);
         panel.add(exitButton);
         panel.add(aboutButton);
+
+        Utility.defaultFontSize(panel);
 
     }
 
