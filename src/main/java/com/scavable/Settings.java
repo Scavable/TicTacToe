@@ -10,12 +10,14 @@ import java.nio.file.FileSystems;
 import java.util.Properties;
 
 public class Settings {
+    private static String separator = FileSystems.getDefault().getSeparator();
 
     public static boolean save(Dimension windowSize, byte rounds, float turnTimeLimit, char[] symbols) throws IOException {
         Properties prop = new Properties();
-        String path = new File(".").getCanonicalPath().concat("\\settings.properties");
 
-        FileOutputStream fos = new FileOutputStream(new File(".").getCanonicalPath().concat(FileSystems.getDefault().getSeparator()+"settings.properties"));
+        String path = new File(".").getCanonicalPath().concat(separator+"settings.properties");
+
+        FileOutputStream fos = new FileOutputStream(new File(".").getCanonicalPath().concat(separator+"settings.properties"));
 
         prop.setProperty("windowSize", windowSize.getWidth() + "," + windowSize.getHeight());
         prop.setProperty("rounds", String.valueOf(rounds));
@@ -31,7 +33,7 @@ public class Settings {
 
     public static boolean load() throws IOException {
         Properties prop = new Properties();
-        FileInputStream fis = new FileInputStream(new File(".").getCanonicalPath().concat("/settings.properties"));
+        FileInputStream fis = new FileInputStream(new File(".").getCanonicalPath().concat(separator+"settings.properties"));
         prop.load(fis);
         fis.close();
         return false;
