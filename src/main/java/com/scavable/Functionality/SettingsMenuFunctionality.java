@@ -32,18 +32,26 @@ public final class SettingsMenuFunctionality {
         settingsMenuGUI.getCancelButton().addActionListener(e -> settingsMenuGUI.dispose());
 
         settingsMenuGUI.getSaveButton().addActionListener(e -> {
-            Dimension windowSize = new Dimension(Integer.parseInt(settingsMenuGUI.getWindowSizeWidthTextField().getText()),
-                    Integer.parseInt(settingsMenuGUI.getWindowSizeHeightTextField().getText()));
-
-            byte rounds = Byte.parseByte(settingsMenuGUI.getRoundsTextField().getText());
-            float turnTimeLimit = Float.parseFloat(settingsMenuGUI.getTurnTimeLimitTextField().getText());
-            char[] symbols = new char[] {settingsMenuGUI.getSymbols1TextField().getText().charAt(0), settingsMenuGUI.getSymbols2TextField().getText().charAt(0)};
-
             try {
-                Settings.save(windowSize, rounds, turnTimeLimit, symbols);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+                Dimension windowSize = new Dimension(Integer.parseInt(settingsMenuGUI.getWindowSizeWidthTextField().getText()),
+                        Integer.parseInt(settingsMenuGUI.getWindowSizeHeightTextField().getText()));
+
+                byte rounds = Byte.parseByte(settingsMenuGUI.getRoundsTextField().getText());
+                float turnTimeLimit = Float.parseFloat(settingsMenuGUI.getTurnTimeLimitTextField().getText());
+                char[] symbols = new char[] {settingsMenuGUI.getSymbols1TextField().getText().charAt(0), settingsMenuGUI.getSymbols2TextField().getText().charAt(0)};
+
+                if(Settings.save(windowSize, rounds, turnTimeLimit, symbols)){
+                    settingsMenuGUI.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(settingsMenuGUI, "Unable to save settings.", "Error", JOptionPane.ERROR_MESSAGE);
+                    settingsMenuGUI.dispose();
+                }
+
+            } catch (IOException | NumberFormatException ex) {
+                JOptionPane.showMessageDialog(settingsMenuGUI, "Unable to save settings.", "Error", JOptionPane.ERROR_MESSAGE);
+                settingsMenuGUI.dispose();
             }
+
         });
     }
 }

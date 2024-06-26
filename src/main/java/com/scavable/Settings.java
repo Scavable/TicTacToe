@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
 import java.util.Properties;
 
 public class Settings {
@@ -14,7 +15,7 @@ public class Settings {
         Properties prop = new Properties();
         String path = new File(".").getCanonicalPath().concat("\\settings.properties");
 
-        FileOutputStream fos = new FileOutputStream(new File(".").getCanonicalPath().concat("/settings.properties"));
+        FileOutputStream fos = new FileOutputStream(new File(".").getCanonicalPath().concat(FileSystems.getDefault().getSeparator()+"settings.properties"));
 
         prop.setProperty("windowSize", windowSize.getWidth() + "," + windowSize.getHeight());
         prop.setProperty("rounds", String.valueOf(rounds));
