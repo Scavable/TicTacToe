@@ -7,7 +7,7 @@ import java.awt.*;
 
 public final class SettingsMenuGUI extends JFrame {
 
-    private final JLabel title = new JLabel("com.scavable.Settings");
+    private final JLabel title = new JLabel("Settings");
 
     private final JLabel windowSizeLabel = new JLabel("Window Size:");
     private final JPanel windowSizePanel = new JPanel();
