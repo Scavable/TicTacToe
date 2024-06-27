@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 public final class SettingsMenuFunctionality {
+
     public SettingsMenuFunctionality(SettingsMenuGUI settingsMenuGUI) {
         actions(settingsMenuGUI);
         settingsMenuGUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -20,6 +21,7 @@ public final class SettingsMenuFunctionality {
         settingsMenuGUI.setVisible(true);
     }
 
+    //TODO: split actions into button action methods
     private void actions(SettingsMenuGUI settingsMenuGUI) {
         settingsMenuGUI.addWindowListener(new WindowAdapter() {
             @Override

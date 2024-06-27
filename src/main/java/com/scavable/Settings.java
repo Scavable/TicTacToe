@@ -35,6 +35,11 @@ public class Settings {
 
     public static Properties load() throws IOException {
         Properties prop = new Properties();
+
+        String path = new File(".").getCanonicalPath().concat(separator+"settings.properties");
+        if(!new File(path).exists())
+            return null;
+
         FileInputStream fis = new FileInputStream(new File(".").getCanonicalPath().concat(separator+"settings.properties"));
         prop.loadFromXML(fis);
         fis.close();

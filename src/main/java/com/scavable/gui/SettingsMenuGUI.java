@@ -31,37 +31,21 @@ public final class SettingsMenuGUI extends JFrame {
     private final JButton saveButton = new JButton("Save");
     private final JButton cancelButton = new JButton("Cancel");
 
+    //If no settings file exist
     public SettingsMenuGUI(){
 
         getContentPane().setLayout(new GridLayout(6,2));
 
-        getContentPane().add(title);
-        getContentPane().add(new JLabel());
-
-        getContentPane().add(windowSizeLabel);
-        windowSizePanel.add(windowSizeWidthTextField);
-        windowSizePanel.add(windowSizeHeightTextField);
-        getContentPane().add(windowSizePanel);
-
-        getContentPane().add(roundsLabel);
-        getContentPane().add(roundsTextField);
-
-        getContentPane().add(turnTimeLimitLabel);
-        getContentPane().add(turnTimeLimitTextField);
-
-        getContentPane().add(symbolsLabel);
-        symbolsPanel.add(symbols1TextField);
-        symbolsPanel.add(symbols2TextField);
-        getContentPane().add(symbolsPanel);
-
-        getContentPane().add(saveButton);
-        getContentPane().add(cancelButton);
+        addToContentPane();
 
         Utility.defaultFontSize(getContentPane());
 
         SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
     }
 
+
+
+    //If settings file exist
     public SettingsMenuGUI(Properties prop){
 
         windowSizeWidthTextField.setText(prop.getProperty("windowSizeWidth"));
@@ -73,6 +57,14 @@ public final class SettingsMenuGUI extends JFrame {
 
         getContentPane().setLayout(new GridLayout(6,2));
 
+        addToContentPane();
+
+        Utility.defaultFontSize(getContentPane());
+
+        SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
+    }
+
+    private void addToContentPane() {
         getContentPane().add(title);
         getContentPane().add(new JLabel());
 
@@ -94,10 +86,6 @@ public final class SettingsMenuGUI extends JFrame {
 
         getContentPane().add(saveButton);
         getContentPane().add(cancelButton);
-
-        Utility.defaultFontSize(getContentPane());
-
-        SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
     }
 
     public JTextField getWindowSizeWidthTextField() {
