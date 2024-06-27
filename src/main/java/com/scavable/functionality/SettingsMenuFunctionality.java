@@ -28,7 +28,11 @@ public final class SettingsMenuFunctionality {
             }
         });
 
-        settingsMenuGUI.getCancelButton().addActionListener(e -> settingsMenuGUI.dispose());
+        settingsMenuGUI.getCancelButton().addActionListener(e ->{
+            settingsMenuGUI.dispose();
+            MainMenuGUI.getInstance().setEnabled(true);
+            MainMenuGUI.getInstance().toFront();
+        });
 
         settingsMenuGUI.getSaveButton().addActionListener(e -> {
             try {
