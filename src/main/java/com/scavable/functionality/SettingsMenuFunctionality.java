@@ -4,11 +4,8 @@ import com.scavable.gui.MainMenuGUI;
 import com.scavable.gui.SettingsMenuGUI;
 import com.scavable.Settings;
 import com.scavable.util.Utility;
-import jdk.jshell.execution.Util;
 
 import javax.swing.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileInputStream;

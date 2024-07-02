@@ -1,5 +1,6 @@
 package com.scavable.functionality;
 
+import com.scavable.gui.GameGUI;
 import com.scavable.gui.MainMenuGUI;
 import com.scavable.gui.SettingsMenuGUI;
 
@@ -52,6 +53,10 @@ public final class MainMenuFunctionality {
     }
 
     private void playButtonAction(JButton playButton, Properties prop) {
+        playButton.addActionListener(e -> {
+            mainMenuGUI.setEnabled(false);
+            new GameGUI(prop);
+        });
     }
 
     private void menuTitleLayout(JLabel menuTitle) {
