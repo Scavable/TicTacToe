@@ -2,6 +2,8 @@ package com.scavable.util;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public final class Utility {
 
@@ -23,5 +25,20 @@ public final class Utility {
 
         }
 
+    }
+
+    public static void defaultFocus(Component... component){
+        for (Component c : component) {
+            if (c instanceof JPanel) {
+                defaultFocus(((JPanel)c).getComponents());
+            }
+            if (c instanceof JTextField textField) {
+                textField.addFocusListener(new FocusAdapter() {
+                    public void focusGained(FocusEvent e) {
+                        textField.selectAll();
+                    }
+                });
+            }
+        }
     }
 }

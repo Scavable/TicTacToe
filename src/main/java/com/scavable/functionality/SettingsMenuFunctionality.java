@@ -3,8 +3,11 @@ package com.scavable.functionality;
 import com.scavable.gui.MainMenuGUI;
 import com.scavable.gui.SettingsMenuGUI;
 import com.scavable.Settings;
+import com.scavable.util.Utility;
 
 import javax.swing.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
@@ -21,6 +24,8 @@ public final class SettingsMenuFunctionality {
         settingsMenuGUI.setSize(640, 480);
         settingsMenuGUI.setLocationRelativeTo(MainMenuGUI.getInstance());
         settingsMenuGUI.setVisible(true);
+
+        Utility.defaultFocus(settingsMenuGUI.getContentPane());
     }
 
     //TODO: create actions class to store program actions. Then set action to each component
