@@ -14,19 +14,19 @@ public final class SettingsMenuGUI extends JFrame {
     private final JLabel windowSizeLabel = new JLabel("Window Size:");
     private final JPanel windowSizePanel = new JPanel();
 
-    private final JTextField windowSizeWidthTextField = new JTextField("1920", 5);
-    private final JTextField windowSizeHeightTextField = new JTextField("1080", 5);
+    private final JTextField windowSizeWidthTextField = new JTextField("1920");
+    private final JTextField windowSizeHeightTextField = new JTextField("1080");
 
     private final JLabel roundsLabel = new JLabel("Rounds:");
-    private final JTextField roundsTextField = new JTextField("1", 2);
+    private final JTextField roundsTextField = new JTextField("1");
 
     private final JLabel turnTimeLimitLabel = new JLabel("Turn Time Limit:");
-    private final JTextField turnTimeLimitTextField = new JTextField("5", 2);
+    private final JTextField turnTimeLimitTextField = new JTextField("5");
 
     private final JLabel symbolsLabel = new JLabel("Symbols:");
     private final JPanel symbolsPanel = new JPanel();
-    private final JTextField symbols1TextField = new JTextField("X", 2);
-    private final JTextField symbols2TextField = new JTextField("O", 2);
+    private final JTextField symbols1TextField = new JTextField("X");
+    private final JTextField symbols2TextField = new JTextField("O");
 
     private final JButton saveButton = new JButton("Save");
     private final JButton cancelButton = new JButton("Cancel");

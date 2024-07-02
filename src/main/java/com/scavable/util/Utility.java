@@ -41,4 +41,17 @@ public final class Utility {
             }
         }
     }
+
+    public static void defaultTextAlignment(Component... components){
+        for (Component c : components) {
+            if (c instanceof JPanel) {
+                defaultTextAlignment(((JPanel)c).getComponents());
+            }
+            if (c instanceof JTextField textField) {
+                textField.setHorizontalAlignment(SwingConstants.CENTER);
+                //textField.setAlignmentX(Component.LEFT_ALIGNMENT);
+            }
+        }
+
+    }
 }
