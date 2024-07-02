@@ -43,8 +43,6 @@ public final class SettingsMenuGUI extends JFrame {
         SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
     }
 
-
-
     //If settings file exist
     public SettingsMenuGUI(Properties prop){
 

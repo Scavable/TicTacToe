@@ -10,6 +10,7 @@ import java.nio.file.FileSystems;
 import java.util.Properties;
 
 public class Settings {
+    //OS dependent file seperator
     private static final String separator = FileSystems.getDefault().getSeparator();
 
     public static boolean save(int windowSizeWidth, int windowSizeHeight, byte rounds, float turnTimeLimit, char symbols1, char symbols2) throws IOException {

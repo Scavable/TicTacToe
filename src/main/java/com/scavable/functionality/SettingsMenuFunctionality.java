@@ -3,11 +3,14 @@ package com.scavable.functionality;
 import com.scavable.gui.MainMenuGUI;
 import com.scavable.gui.SettingsMenuGUI;
 import com.scavable.Settings;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
 
 public final class SettingsMenuFunctionality {
 
@@ -46,16 +49,19 @@ public final class SettingsMenuFunctionality {
                 char symbols1 = settingsMenuGUI.getSymbols1TextField().getText().charAt(0);
                 char symbols2 = settingsMenuGUI.getSymbols2TextField().getText().charAt(0);
 
-                if(Settings.save(windowSizeWidth, windowSizeHeight, rounds, turnTimeLimit, symbols1, symbols2)){
-                    settingsMenuGUI.dispose();
-                    MainMenuGUI.getInstance().setEnabled(true);
-                    MainMenuGUI.getInstance().toFront();
-                }else{
+                if (!Settings.save(windowSizeWidth, windowSizeHeight, rounds, turnTimeLimit, symbols1, symbols2)) {
                     JOptionPane.showMessageDialog(settingsMenuGUI, "Unable to save settings.", "Error", JOptionPane.ERROR_MESSAGE);
-                    settingsMenuGUI.dispose();
-                    MainMenuGUI.getInstance().setEnabled(true);
-                    MainMenuGUI.getInstance().toFront();
                 }
+                Properties prop = MainMenuGUI.getProp();
+                prop.loadFromXML(new FileInputStream("settings.properties"));
+                MainMenuGUI.setProp(prop);
+
+                MainMenuGUI.getInstance().setSize(windowSizeWidth, windowSizeHeight);
+                settingsMenuGUI.dispose();
+                MainMenuGUI.getInstance().repaint();
+                MainMenuGUI.getInstance().setLocationRelativeTo(null);
+                MainMenuGUI.getInstance().setEnabled(true);
+                MainMenuGUI.getInstance().toFront();
 
             } catch (IOException | NumberFormatException ex) {
                 JOptionPane.showMessageDialog(settingsMenuGUI, "Unable to save settings.", "Error", JOptionPane.ERROR_MESSAGE);

@@ -18,12 +18,13 @@ public final class MainMenuGUI extends JFrame {
     private final JButton exitButton = new JButton("Exit");
     private final JButton settingsButton = new JButton("Settings");
     private final JButton aboutButton = new JButton("About");
+    private static Properties prop;
 
     public static void main(String[] args) {
         INSTANCE = MainMenuGUI.getInstance();
 
         try {
-            Properties prop = Settings.load();
+            prop = Settings.load();
             MainMenuFunctionality mainMenuFunctionality;
             if(prop != null)
                 mainMenuFunctionality = new MainMenuFunctionality(INSTANCE, prop);
@@ -74,5 +75,13 @@ public final class MainMenuGUI extends JFrame {
 
     public JLabel getMenuTitle() {
         return menuTitle;
+    }
+
+    public static Properties getProp() {
+        return prop;
+    }
+
+    public static void setProp(Properties prop) {
+        MainMenuGUI.prop = prop;
     }
 }
