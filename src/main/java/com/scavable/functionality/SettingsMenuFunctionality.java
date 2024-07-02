@@ -3,7 +3,6 @@ package com.scavable.functionality;
 import com.scavable.gui.MainMenuGUI;
 import com.scavable.gui.SettingsMenuGUI;
 import com.scavable.Settings;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -24,21 +23,14 @@ public final class SettingsMenuFunctionality {
         settingsMenuGUI.setVisible(true);
     }
 
-    //TODO: split actions into button action methods
+    //TODO: create actions class to store program actions. Then set action to each component
     private void actions(SettingsMenuGUI settingsMenuGUI) {
-        settingsMenuGUI.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                MainMenuGUI.getInstance().setEnabled(true);
-            }
-        });
+        windowAction(settingsMenuGUI);
+        cancelButtonAction(settingsMenuGUI);
+        saveButtonAction(settingsMenuGUI);
+    }
 
-        settingsMenuGUI.getCancelButton().addActionListener(e ->{
-            settingsMenuGUI.dispose();
-            MainMenuGUI.getInstance().setEnabled(true);
-            MainMenuGUI.getInstance().toFront();
-        });
-
+    private void saveButtonAction(SettingsMenuGUI settingsMenuGUI) {
         settingsMenuGUI.getSaveButton().addActionListener(e -> {
             try {
                 int windowSizeWidth = Integer.parseInt(settingsMenuGUI.getWindowSizeWidthTextField().getText());
@@ -70,6 +62,23 @@ public final class SettingsMenuFunctionality {
                 MainMenuGUI.getInstance().toFront();
             }
 
+        });
+    }
+
+    private void cancelButtonAction(SettingsMenuGUI settingsMenuGUI) {
+        settingsMenuGUI.getCancelButton().addActionListener(e ->{
+            settingsMenuGUI.dispose();
+            MainMenuGUI.getInstance().setEnabled(true);
+            MainMenuGUI.getInstance().toFront();
+        });
+    }
+
+    private void windowAction(SettingsMenuGUI settingsMenuGUI) {
+        settingsMenuGUI.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                MainMenuGUI.getInstance().setEnabled(true);
+            }
         });
     }
 }
