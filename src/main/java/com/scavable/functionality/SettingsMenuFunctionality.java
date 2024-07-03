@@ -18,7 +18,7 @@ public final class SettingsMenuFunctionality {
         actions(settingsMenuGUI);
         settingsMenuGUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        settingsMenuGUI.setTitle("Tic Tac Toe");
+        settingsMenuGUI.setTitle("Tic Tac Toe Settings");
         settingsMenuGUI.setSize(640, 480);
         settingsMenuGUI.setLocationRelativeTo(MainMenuGUI.getInstance());
         settingsMenuGUI.setVisible(true);

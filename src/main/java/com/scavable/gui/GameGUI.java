@@ -15,9 +15,6 @@ public final class GameGUI extends JFrame {
     }
 
     public GameGUI(Properties prop){
-        //Game layout
-        getContentPane().setLayout(new GridLayout(3,3));
-
         new GameFunctionality(this, prop);
     }
 

@@ -38,7 +38,7 @@ public final class MainMenuFunctionality {
         aboutButtonAction(instance.getAboutButton());
         menuTitleLayout(instance.getMenuTitle());
 
-        instance.setTitle("Tic Tac Toe");
+        instance.setTitle("Tic Tac Toe Menu");
         instance.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         instance.setSize(new Dimension(Integer.parseInt(prop.getProperty("windowSizeWidth")), Integer.parseInt(prop.getProperty("windowSizeHeight"))));
         instance.setLocationRelativeTo(null);
