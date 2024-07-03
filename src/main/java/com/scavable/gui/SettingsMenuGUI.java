@@ -2,12 +2,10 @@ package com.scavable.gui;
 
 import com.scavable.functionality.SettingsMenuFunctionality;
 import com.scavable.util.Utility;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Properties;
-import java.util.Set;
 
 public final class SettingsMenuGUI extends JFrame {
     private static SettingsMenuGUI INSTANCE = null;
@@ -35,8 +33,7 @@ public final class SettingsMenuGUI extends JFrame {
     private final JButton cancelButton = new JButton("Cancel");
 
     //If no settings file exist
-    public SettingsMenuGUI(){
-        INSTANCE = SettingsMenuGUI.getInstance();
+    private SettingsMenuGUI(){
 
         getContentPane().setLayout(new GridLayout(6,2));
 
@@ -44,12 +41,11 @@ public final class SettingsMenuGUI extends JFrame {
 
         Utility.defaultFontSize(getContentPane());
 
-        SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
+        //SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(INSTANCE);
     }
 
     //If settings file exist
-    public SettingsMenuGUI(Properties prop){
-        INSTANCE = SettingsMenuGUI.getInstance();
+    private SettingsMenuGUI(Properties prop){
 
         windowSizeWidthTextField.setText(prop.getProperty("windowSizeWidth"));
         windowSizeHeightTextField.setText(prop.getProperty("windowSizeHeight"));
@@ -64,7 +60,7 @@ public final class SettingsMenuGUI extends JFrame {
 
         Utility.defaultFontSize(getContentPane());
 
-        SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(this);
+        //SettingsMenuFunctionality settingsMenuFunctionality = new SettingsMenuFunctionality(INSTANCE);
     }
 
     public static SettingsMenuGUI getInstance(){

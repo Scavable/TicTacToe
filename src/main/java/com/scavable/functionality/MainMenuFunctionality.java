@@ -9,6 +9,7 @@ import java.awt.*;
 import java.util.Properties;
 
 public final class MainMenuFunctionality {
+    private static SettingsMenuGUI INSTANCE = null;
     MainMenuGUI mainMenuGUI;
     public MainMenuFunctionality(MainMenuGUI instance) {
         System.out.println("No Settings Loaded");
@@ -29,7 +30,6 @@ public final class MainMenuFunctionality {
     }
 
     public MainMenuFunctionality(MainMenuGUI instance, Properties prop) {
-        System.out.println("Settings Loaded");
         mainMenuGUI = instance;
 
         playButtonAction(instance.getPlayButton(), prop);
@@ -48,7 +48,8 @@ public final class MainMenuFunctionality {
     private void settingsButtonAction(JButton settingsButton, Properties prop) {
         settingsButton.addActionListener(e -> {
             mainMenuGUI.setEnabled(false);
-            new SettingsMenuGUI(prop);
+            INSTANCE = SettingsMenuGUI.getInstance();
+            new SettingsMenuFunctionality(INSTANCE);
         });
     }
 
@@ -68,7 +69,7 @@ public final class MainMenuFunctionality {
     private void settingsButtonAction(JButton settingsButton) {
         settingsButton.addActionListener(e -> {
             mainMenuGUI.setEnabled(false);
-            new SettingsMenuGUI();
+            SettingsMenuGUI.getInstance();
         });
     }
 
