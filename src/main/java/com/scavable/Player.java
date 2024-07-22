@@ -24,4 +24,8 @@ public class Player {
     public void setMyTurn(boolean myTurn) {
         this.myTurn = myTurn;
     }
+
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
 }
